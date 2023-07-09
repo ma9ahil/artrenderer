@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+/* .art-element {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+} */
