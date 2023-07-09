@@ -11,7 +11,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://collectionapi.metmuseum.org/public/collection/v1/search?medium=Quilts|Silk|Bedcovers&q=quilt'
+          'https://collectionapi.metmuseum.org/public/collection/v1/search?isOnView=true&q=sunflower'
         );
         const data = response.data;
         setArt(data);
