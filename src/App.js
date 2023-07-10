@@ -30,6 +30,10 @@ function App() {
 
   return (
     <>
+      <nav className='navbar'>
+    <img src="./logo.png" height="100" alt=""></img>
+    <h3 className="nav-element">Home</h3></nav>
+    {/* <img  className="bgd" src="./image.jpg" height="600" width="100%"></img> */}
       <div className="App">{artElements}</div>
     </>
   );
