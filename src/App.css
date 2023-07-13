@@ -1,10 +1,13 @@
 .App {
   text-align: center;
   box-sizing: border-box;
+  margin: 0;
 }
 .navbar{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
   background-color: #000;
   padding: 2%;
   border-bottom: 1px solid rgba(255,255,255,0.3);
@@ -14,8 +17,16 @@
   opacity: 0.75;
 }
 .nav-element{
-  
+  display: flex;
+  flex-direction: row;
 
+}
+
+.navbar-options{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 4%;
 }
 /* .nav-header{
   font-family: 'Inter', sans-serif;
