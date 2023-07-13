@@ -10,10 +10,13 @@ const Department = () => {
   useEffect(() => {
     const fetchObjects = async () => {
       try {
-        const departmentId = 1; // Replace with the desired department ID
+        // const departmentIds = [10, 11, 13, 14, 19, 21]; // Departments to fetch objects for
+        const departmentId = 10;
         const limit = 50; // Number of objects to retrieve
 
         // Fetch all objects for the department
+        // const objectPromises = departmentIds.map(async (departmentId) => {
+        //     try {
         const response = await axios.get(
           'https://collectionapi.metmuseum.org/public/collection/v1/objects',
           {
@@ -54,7 +57,7 @@ const Department = () => {
       } finally {
         setLoading(false);
       }
-    };
+      };
 
     fetchObjects();
   }, []);
@@ -73,6 +76,7 @@ const Department = () => {
       {objects.map((object) => (
         <div key={object.objectID}>
           <h3>{object.title}</h3>
+          <img src={object.primaryImage} width="300" height="300" alt="" />
           {/* Render other relevant object information */}
         </div>
       ))}
@@ -81,4 +85,5 @@ const Department = () => {
 };
 
 export default Department;
+
 
