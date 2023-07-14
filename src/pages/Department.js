@@ -10,30 +10,30 @@ const Department = () => {
   useEffect(() => {
     const fetchObjects = async () => {
       try {
-        // const departmentIds = [10, 11, 13, 14, 19, 21]; // Departments to fetch objects for
-        const departmentId = 10;
+        const departmentIds = [10, 11, 13, 14, 19, 21]; // Departments to fetch objects for
         const limit = 50; // Number of objects to retrieve
 
         // Fetch all objects for the department
-        // const objectPromises = departmentIds.map(async (departmentId) => {
-        //     try {
+        const objectPromises = departmentIds.map(async (departmentId) => {
+          try {
         const response = await axios.get(
-          'https://collectionapi.metmuseum.org/public/collection/v1/objects',
+          'https://collectionapi.metmuseum.org/public/collection/v1/search',
           {
             params: {
-              departmentId,
+              q: `departmentId:${departmentId}`,
             },
           }
         );
 
         if (response.status === 200) {
           const allObjects = response.data.objectIDs;
+          console.log(response.data.objectIDs)
 
           // Limit the number of objects
           const limitedObjects = allObjects.slice(0, limit);
 
           // Fetch information for each limited object
-          const objectPromises = limitedObjects.map(async (objectId) => {
+          const departmentObjectPromises = limitedObjects.map(async (objectId) => {
             try {
               const objectResponse = await axios.get(
                 `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`
@@ -44,20 +44,29 @@ const Department = () => {
               return null;
             }
           });
-
           // Wait for all object fetch requests to complete
-          const objectData = await Promise.all(objectPromises);
-          setObjects(objectData.filter((obj) => obj !== null));
+          const departmentObjectData = await Promise.all(departmentObjectPromises);
+          return departmentObjectData.filter((obj) => obj !== null);
         } else {
-          setError('Error fetching objects');
+          console.error(`Error fetching objects for department ${departmentId}`);
+          return [];
         }
+      } catch (error) {
+        console.error('Error:', error);
+        return [];
+      }
+    });
+
+           // Wait for all department object fetch requests to complete
+        const departmentObjectsData = await Promise.all(objectPromises);
+        setObjects(departmentObjectsData.flat());
       } catch (error) {
         console.error('Error:', error);
         setError('Error fetching objects');
       } finally {
         setLoading(false);
       }
-      };
+    };
 
     fetchObjects();
   }, []);
