@@ -6,7 +6,9 @@ import React from 'react';
 import ArtElement from './components/ArtElement';
 import Home from './pages/Home';
 import Department from './pages/Department';
+import Departments from './pages/MultipleDepartments';
 import Art from './pages/Art';
+
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
       <Routes>
         <Route index path="/" element={<Home/>}></Route>
       <Route path="/home" element={<Home/>}></Route>
+      <Route path="/departments" element={<Departments/>}></Route>
       <Route path="/department" element={<Department/>}></Route>
       </Routes>
     </BrowserRouter>

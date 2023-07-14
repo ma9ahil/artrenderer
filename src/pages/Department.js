@@ -83,6 +83,7 @@ const Department = () => {
     <div>
       <h1>Department Objects</h1>
       {objects.map((object) => (
+        object.primaryImage!==""&&
         <div key={object.objectID}>
           <h3>{object.title}</h3>
           <img src={object.primaryImage} width="300" height="300" alt="" />
