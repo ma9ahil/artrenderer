@@ -9,7 +9,14 @@ export default function Departments() {
 
     return(
         <>
-        <Link to="/department"><h3 className="nav-element">American Decorative Arts/Or other name</h3></Link>
+
+        {/* <BrowserRouter>
+        //cannot have a router inside a router
+        <Routes>
+            <Route path="/" element={<Department/>}></Route>
+            </Routes>
+        </BrowserRouter> */}
+        <Link to="/department/4"><h3 className="nav-element">American Decorative Arts/Or other name</h3></Link>
         </>
     );
 }
